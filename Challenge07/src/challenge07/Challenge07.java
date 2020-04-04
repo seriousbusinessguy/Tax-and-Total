@@ -12,50 +12,55 @@ import java.util.Scanner;
  */
 public class Challenge07 {
 
+    public static String formatPrice(Integer price) {
+        return "$" + Integer.toString(price / 100) + "." + Integer.toString(price % 100)
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         
-        final double STATE_TAX = .04;    //State tax rate
-        final double COUNTY_TAX = .02;   //County tax rate
-        double purchaseStateTax;        //State tax on purchase
-        double purchaseCountyTax;       //County tax on purchase
-        double totalTax;                //Total tax on purchase
-        double purchasePrice;           //User-entered purchase price
-        double totalPrice;              //The total price to be displayed
+        final double STATE_TAX = 0.04;    //State tax rate
+        final double COUNTY_TAX = 0.02;   //County tax rate
+        Integer purchaseStateTax;        //State tax on purchase
+        Integer purchaseCountyTax;       //County tax on purchase
+        Integer totalTax;                //Total tax on purchase
+        Integer purchasePrice;           //User-entered purchase price
+        Integer totalPrice;              //The total price to be displayed
         
         System.out.print("How much is the snow mobile? $");  
-                        //To find purchase price
-            purchasePrice = keyboard.nextDouble();           //User input
+        //To find purchase price
+        double rawPurchasePrice = keyboard.nextDouble(); //User input
+
+        purchasePrice = Math.round(rawPurchasePrice * 100);
+
+
             
-            purchaseStateTax = purchasePrice * STATE_TAX;    
+            purchaseStateTax = Math.round(purchasePrice * STATE_TAX);    
                         //Computes state tax on purchase
                         
-        purchaseCountyTax = purchasePrice * COUNTY_TAX;
+        purchaseCountyTax = Math.round(purchasePrice * COUNTY_TAX);
                         //Computes county tax on purchase
         
         totalTax = purchaseStateTax + purchaseCountyTax;
                         //Computes total sales tax
                         
-        totalPrice = (double)Math.round((purchasePrice + totalTax)*100)/100;
+        totalPrice = purchasePrice + totalTax;
         
         
                         //Computes total price
         
-        System.out.println("Price: $" + purchasePrice);
+        System.out.println("Price: " + formatPrice(purchasePrice));
         
-        System.out.println("4% State Sales Tax: $" + 
-                (double)Math.round(purchaseStateTax*100)/100);
+        System.out.println("4% State Sales Tax: " + formatPrice(purchaseStateTax));
         
-        System.out.println("2% County Sales Tax: $" + 
-                (double)Math.round(purchaseCountyTax *100)/100);
+        System.out.println("2% County Sales Tax: " + formatPrice(purchaseCountyTax));
         
-        System.out.println("Total Sales Tax: $" + 
-                (double)Math.round(totalTax*100)/100);
+        System.out.println("Total Sales Tax: " + formatPrice(totalTax));
                 
-        System.out.println("Total Cost: $" + totalPrice);
+        System.out.println("Total Cost: " + formatPrice(totalPrice));
                          //Displays information computed by program
         
         
