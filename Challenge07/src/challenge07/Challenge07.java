@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Challenge07 {
 
     public static String formatPrice(Integer price) {
-        return "$" + Integer.toString(price / 100) + "." + Integer.toString(price % 100)
+        return "$" + Integer.toString(price / 100) + "." + Integer.toString(price % 100);
     }
 
     /**
