@@ -34,14 +34,14 @@ public class Challenge07 {
         //To find purchase price
         double rawPurchasePrice = keyboard.nextDouble(); //User input
 
-        purchasePrice = Math.round(rawPurchasePrice * 100);
+        purchasePrice = (int)(rawPurchasePrice * 100);
 
 
             
-            purchaseStateTax = Math.round(purchasePrice * STATE_TAX);    
+            purchaseStateTax = (int)(purchasePrice * STATE_TAX);    
                         //Computes state tax on purchase
                         
-        purchaseCountyTax = Math.round(purchasePrice * COUNTY_TAX);
+        purchaseCountyTax = (int)(purchasePrice * COUNTY_TAX);
                         //Computes county tax on purchase
         
         totalTax = purchaseStateTax + purchaseCountyTax;
